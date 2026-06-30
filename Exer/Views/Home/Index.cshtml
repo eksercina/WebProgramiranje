@@ -1,0 +1,42 @@
+@model Exer.Models.HomeViewModel
+@using Exer.Models
+@{
+    ViewBag.Title = "Pocetna";
+    var current = ViewBag.User as User;
+}
+<section class="hero">
+    <div>
+        <h1>Dostupni smestajni objekti</h1>
+        <p>Pretraga, sortiranje i rezervacije u tekstualno cuvanoj MVC aplikaciji.</p>
+    </div>
+</section>
+<form class="filters" method="get">
+    <input name="Name" value="@Model.Name" placeholder="Naziv" />
+    <input name="City" value="@Model.City" placeholder="Grad" />
+    <input name="Type" value="@Model.Type" placeholder="Tip" />
+    <input name="MinPrice" value="@Model.MinPrice" placeholder="Min cena" type="number" step="0.01" />
+    <input name="MaxPrice" value="@Model.MaxPrice" placeholder="Max cena" type="number" step="0.01" />
+    <select name="Sort">
+        <option value="">Naziv rastuce</option>
+        <option value="name_desc">Naziv opadajuce</option>
+        <option value="price">Cena rastuce</option>
+        <option value="price_desc">Cena opadajuce</option>
+        <option value="date">Datum rastuce</option>
+        <option value="date_desc">Datum opadajuce</option>
+    </select>
+    <button type="submit">Primeni</button>
+</form>
+<section class="grid">
+@foreach (var item in Model.Accommodations) {
+    <article class="card">
+        <img src="@Url.Content(item.ImagePath)" alt="@item.Name" />
+        <div class="card-body">
+            <h2>@item.Name</h2>
+            <p>@item.Type, @item.City</p>
+            <p>@item.PricePerNight.ToString("0.00") EUR / noc, do @item.MaxGuests gostiju</p>
+            <a class="button" href="@Url.Action("Details", new { id = item.Id })">Detalji</a>
+            @if (current != null && current.Role == UserRole.Guest) { <a class="button secondary" href="@Url.Action("CreateReservation", "Guest", new { id = item.Id })">Rezervisi</a> }
+        </div>
+    </article>
+}
+</section>

@@ -1,0 +1,4 @@
+@model IEnumerable<Exer.Models.Reservation>
+@using Exer.Models
+@{ ViewBag.Title = "Rezervacije"; var acc = (IEnumerable<Accommodation>)ViewBag.Accommodations; }
+<h1>Rezervacije</h1><table><tr><th>Objekat</th><th>Gost</th><th>Datumi</th><th>Cena</th><th>Status</th><th>Promena</th></tr>@foreach (var r in Model) { var a = acc.FirstOrDefault(x => x.Id == r.AccommodationId); <tr><td>@(a == null ? "" : a.Name)</td><td>@r.GuestUsername</td><td>@r.CheckIn.ToString("dd.MM.yyyy") - @r.CheckOut.ToString("dd.MM.yyyy")</td><td>@r.TotalPrice</td><td>@r.Status</td><td>@using (Html.BeginForm("ChangeReservationStatus", "Admin", FormMethod.Post)) { <input type="hidden" name="id" value="@r.Id" />@Html.DropDownList("status", new SelectList(Enum.GetNames(typeof(ReservationStatus))))<button>Snimi</button> }</td></tr> }</table>

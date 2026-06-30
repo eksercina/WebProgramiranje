@@ -1,0 +1,4 @@
+@model IEnumerable<Exer.Models.Review>
+@using Exer.Models
+@{ ViewBag.Title = "Recenzije"; var acc = (IEnumerable<Accommodation>)ViewBag.Accommodations; }
+<h1>Recenzije</h1><table><tr><th>Objekat</th><th>Gost</th><th>Naslov</th><th>Ocena</th><th>Status</th><th></th></tr>@foreach (var r in Model) { var a = acc.FirstOrDefault(x => x.Id == r.AccommodationId); <tr><td>@(a == null ? "" : a.Name)</td><td>@r.GuestUsername</td><td>@r.Title</td><td>@r.Rating</td><td>@r.Status</td><td>@if (r.Status == ReviewStatus.Created) { using (Html.BeginForm("ChangeReviewStatus", "Admin", FormMethod.Post)) { <input type="hidden" name="id" value="@r.Id" /><select name="status"><option>Approved</option><option>Rejected</option></select><button>Odluci</button> } }</td></tr> }</table>

@@ -1,0 +1,6 @@
+@model IEnumerable<Exer.Models.Accommodation>
+@{ ViewBag.Title = "Moji objekti"; }
+<h1>Moji objekti</h1>
+<a class="button" href="@Url.Action("EditAccommodation")">Dodaj objekat</a>
+<form method="get" class="filters"><select name="available"><option value="">Svi</option><option value="true">Dostupni</option><option value="false">Nedostupni</option></select><select name="sort"><option value="">Naziv rastuce</option><option value="name_desc">Naziv opadajuce</option><option value="price">Cena rastuce</option><option value="price_desc">Cena opadajuce</option><option value="date">Datum rastuce</option><option value="date_desc">Datum opadajuce</option></select><button>Primeni</button></form>
+<table><tr><th>Slika</th><th>Naziv</th><th>Grad</th><th>Cena</th><th>Dostupan</th><th></th></tr>@foreach (var a in Model) { <tr><td><img class="thumb" src="@Url.Content(a.ImagePath)" /></td><td>@a.Name</td><td>@a.City</td><td>@a.PricePerNight</td><td>@a.Available</td><td>@if (a.Available) { <a href="@Url.Action("EditAccommodation", new { id = a.Id })">Izmeni</a> using (Html.BeginForm("DeleteAccommodation", "Host", new { id = a.Id }, FormMethod.Post)) { <button>Obrisi</button> } }</td></tr> }</table>

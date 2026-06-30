@@ -1,0 +1,14 @@
+@model Exer.Models.User
+@{ ViewBag.Title = "Registracija"; }
+<h1>Registracija gosta</h1>
+@Html.ValidationSummary()
+<form method="post" class="form narrow">
+    <label>Korisnicko ime @Html.TextBoxFor(m => m.Username)</label>
+    <label>Lozinka @Html.PasswordFor(m => m.Password)</label>
+    <label>Ime @Html.TextBoxFor(m => m.FirstName)</label>
+    <label>Prezime @Html.TextBoxFor(m => m.LastName)</label>
+    <label>Email @Html.TextBoxFor(m => m.Email)</label>
+    <label>Datum rodjenja <input type="date" name="BirthDate" value="@Model.BirthDate.ToString("yyyy-MM-dd")" /></label>
+    <label>Pol @Html.EnumDropDownListFor(m => m.Gender)</label>
+    <button type="submit">Registruj se</button>
+</form>

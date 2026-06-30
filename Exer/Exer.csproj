@@ -109,9 +109,51 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GuestController.cs" />
+    <Compile Include="Controllers\HostController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Models\DomainModels.cs" />
+    <Compile Include="Models\ViewModels.cs" />
+    <Compile Include="Services\AppRepository.cs" />
+    <Content Include="Content\site.css" />
+    <Content Include="Content\Images\hotel.svg" />
+    <Content Include="Content\Images\apartment.svg" />
+    <Content Include="Content\Images\hostel.svg" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Guest\CreateReservation.cshtml" />
+    <Content Include="Views\Guest\Reservations.cshtml" />
+    <Content Include="Views\Guest\Reviews.cshtml" />
+    <Content Include="Views\Host\Accommodations.cshtml" />
+    <Content Include="Views\Host\EditAccommodation.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Admin\Accommodations.cshtml" />
+    <Content Include="Views\Admin\Reservations.cshtml" />
+    <Content Include="Views\Admin\Reviews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Host\" />
+    <Folder Include="Views\Guest\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Services\" />
+    <Folder Include="Content\Uploads\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="Content\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

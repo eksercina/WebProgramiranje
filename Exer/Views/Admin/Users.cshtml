@@ -1,0 +1,24 @@
+@model Exer.Models.AdminUsersViewModel
+@using Exer.Models
+@{ ViewBag.Title = "Korisnici"; }
+<h1>Korisnici</h1>
+<a class="button" href="@Url.Action("EditUser")">Dodaj domacina</a>
+<form method="get" class="filters">
+    <input name="FirstName" placeholder="Ime" value="@Model.FirstName" />
+    <input name="LastName" placeholder="Prezime" value="@Model.LastName" />
+    <input type="date" name="BirthFrom" />
+    <input type="date" name="BirthTo" />
+    <select name="Role"><option value="">Uloga</option><option value="Guest">Guest</option><option value="Host">Host</option></select>
+    <select name="Sort"><option value="">Ime rastuce</option><option value="first_desc">Ime opadajuce</option><option value="birth">Rodjenje rastuce</option><option value="birth_desc">Rodjenje opadajuce</option><option value="role">Uloga rastuce</option><option value="role_desc">Uloga opadajuce</option></select>
+    <button>Pretrazi</button>
+</form>
+<table>
+<tr><th>Korisnicko ime</th><th>Ime</th><th>Email</th><th>Rodjenje</th><th>Uloga</th><th></th></tr>
+@foreach (var u in Model.Users)
+{
+    <tr>
+        <td>@u.Username</td><td>@u.FirstName @u.LastName</td><td>@u.Email</td><td>@u.BirthDate.ToString("dd.MM.yyyy")</td><td>@u.Role</td>
+        <td><a href="@Url.Action("EditUser", new { id = u.Username })">Izmeni</a>@using (Html.BeginForm("DeleteUser", "Admin", new { id = u.Username }, FormMethod.Post)) { <button>Obrisi</button> }</td>
+    </tr>
+}
+</table>

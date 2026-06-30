@@ -1,0 +1,55 @@
+@using Exer.Models
+@{
+    var repo = new Exer.Services.AppRepository();
+    var current = repo.CurrentUser(Session);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title - Smestaj</title>
+    <link href="~/Content/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="@Url.Action("Index", "Home")">Rezervisi smestaj</a>
+        <nav>
+            <a href="@Url.Action("Index", "Home")">Objekti</a>
+            @if (current != null)
+            {
+                <a href="@Url.Action("Profile", "Account")">Profil</a>
+                if (current.Role == UserRole.Guest)
+                {
+                    <a href="@Url.Action("Reservations", "Guest")">Moje rezervacije</a>
+                    <a href="@Url.Action("Reviews", "Guest")">Moje recenzije</a>
+                }
+                if (current.Role == UserRole.Host)
+                {
+                    <a href="@Url.Action("Accommodations", "Host")">Moji objekti</a>
+                }
+                if (current.Role == UserRole.Administrator)
+                {
+                    <a href="@Url.Action("Users", "Admin")">Korisnici</a>
+                    <a href="@Url.Action("Accommodations", "Admin")">Svi objekti</a>
+                    <a href="@Url.Action("Reservations", "Admin")">Rezervacije</a>
+                    <a href="@Url.Action("Reviews", "Admin")">Recenzije</a>
+                }
+                <a href="@Url.Action("Logout", "Account")">Odjava (@current.Username)</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Login", "Account")">Prijava</a>
+                <a href="@Url.Action("Register", "Account")">Registracija</a>
+            }
+        </nav>
+    </header>
+    <main class="page">
+        @if (TempData["Message"] != null)
+        {
+            <div class="notice">@TempData["Message"]</div>
+        }
+        @RenderBody()
+    </main>
+</body>
+</html>

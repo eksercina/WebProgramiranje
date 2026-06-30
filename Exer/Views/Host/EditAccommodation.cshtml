@@ -1,0 +1,16 @@
+@model Exer.Models.Accommodation
+@{ ViewBag.Title = "Objekat"; }
+<h1>Objekat</h1>
+<form method="post" enctype="multipart/form-data" class="form narrow">
+    @Html.HiddenFor(m => m.Id)
+    <label>Naziv @Html.TextBoxFor(m => m.Name)</label>
+    <label>Tip @Html.TextBoxFor(m => m.Type)</label>
+    <label>Opis @Html.TextAreaFor(m => m.Description)</label>
+    <label>Adresa @Html.TextBoxFor(m => m.Address)</label>
+    <label>Grad @Html.TextBoxFor(m => m.City)</label>
+    <label>Cena po noci @Html.TextBoxFor(m => m.PricePerNight)</label>
+    <label>Maksimalan broj gostiju @Html.TextBoxFor(m => m.MaxGuests)</label>
+    <label>Dostupan @Html.CheckBoxFor(m => m.Available)</label>
+    <label>Slika <input type="file" name="image" /></label>
+    <button>Sacuvaj</button>
+</form>

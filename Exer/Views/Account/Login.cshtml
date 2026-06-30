@@ -1,0 +1,9 @@
+@{ ViewBag.Title = "Prijava"; }
+<h1>Prijava</h1>
+@if (ViewBag.Error != null) { <div class="error">@ViewBag.Error</div> }
+<form method="post" class="form narrow">
+    <label>Korisnicko ime<input name="username" /></label>
+    <label>Lozinka<input name="password" type="password" /></label>
+    <button type="submit">Prijavi se</button>
+</form>
+<div class="panel"><strong>Test nalozi:</strong> admin/admin, host1/host1, guest1/guest1</div>

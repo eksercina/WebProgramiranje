@@ -1,0 +1,12 @@
+@model Exer.Models.ReservationFormViewModel
+@{ ViewBag.Title = "Rezervacija"; }
+<h1>Rezervacija: @Model.Accommodation.Name</h1>
+@Html.ValidationSummary()
+<form method="post" class="form narrow">
+    <input type="hidden" name="AccommodationId" value="@Model.AccommodationId" />
+    <label>Datum prijave <input type="date" name="CheckIn" value="@Model.CheckIn.ToString("yyyy-MM-dd")" /></label>
+    <label>Datum odjave <input type="date" name="CheckOut" value="@Model.CheckOut.ToString("yyyy-MM-dd")" /></label>
+    <label>Broj gostiju <input type="number" name="GuestCount" value="@Model.GuestCount" min="1" max="@Model.Accommodation.MaxGuests" /></label>
+    <p>Cena po noci: @Model.Accommodation.PricePerNight.ToString("0.00") EUR</p>
+    <button type="submit">Kreiraj rezervaciju</button>
+</form>

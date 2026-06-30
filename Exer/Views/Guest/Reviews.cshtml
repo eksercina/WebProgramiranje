@@ -1,0 +1,15 @@
+@model IEnumerable<Exer.Models.Review>
+@using Exer.Models
+@{ ViewBag.Title = "Moje recenzije"; var acc = (IEnumerable<Accommodation>)ViewBag.Accommodations; var finished = (IEnumerable<Reservation>)ViewBag.Finished; }
+<h1>Moje recenzije</h1>
+@if (finished.Any()) {
+<form method="post" action="@Url.Action("SaveReview")" class="form narrow">
+    <label>Objekat<select name="AccommodationId">@foreach (var r in finished) { var a = acc.FirstOrDefault(x => x.Id == r.AccommodationId); if (a != null) { <option value="@a.Id">@a.Name</option> } }</select></label>
+    <label>Naslov<input name="Title" /></label>
+    <label>Sadrzaj<textarea name="Content"></textarea></label>
+    <label>Ocena<input type="number" name="Rating" min="1" max="5" value="5" /></label>
+    <button>Posalji recenziju</button>
+</form> }
+<table><tr><th>Objekat</th><th>Naslov</th><th>Ocena</th><th>Status</th><th></th></tr>
+@foreach (var r in Model) { var a = acc.FirstOrDefault(x => x.Id == r.AccommodationId); <tr><td>@(a == null ? "" : a.Name)</td><td>@r.Title</td><td>@r.Rating</td><td>@r.Status</td><td>@using (Html.BeginForm("DeleteReview", "Guest", new { id = r.Id }, FormMethod.Post)) { <button>Obrisi</button> }</td></tr> }
+</table>

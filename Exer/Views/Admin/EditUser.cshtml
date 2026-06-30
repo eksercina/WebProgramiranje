@@ -1,0 +1,4 @@
+@model Exer.Models.User
+@{ ViewBag.Title = "Korisnik"; }
+<h1>Korisnik</h1>
+<form method="post" class="form narrow"><label>Korisnicko ime @Html.TextBoxFor(m => m.Username)</label><label>Lozinka @Html.TextBoxFor(m => m.Password)</label><label>Ime @Html.TextBoxFor(m => m.FirstName)</label><label>Prezime @Html.TextBoxFor(m => m.LastName)</label><label>Email @Html.TextBoxFor(m => m.Email)</label><label>Datum rodjenja <input type="date" name="BirthDate" value="@Model.BirthDate.ToString("yyyy-MM-dd")" /></label><label>Pol @Html.EnumDropDownListFor(m => m.Gender)</label><label>Uloga @Html.EnumDropDownListFor(m => m.Role)</label><button>Sacuvaj</button></form>

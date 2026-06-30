@@ -1,0 +1,20 @@
+@model Exer.Models.ProfileViewModel
+@{ ViewBag.Title = "Profil"; }
+<h1>Profil</h1>
+<form method="post" class="form narrow">
+    <input type="hidden" name="Username" value="@Model.User.Username" />
+    <label>Korisnicko ime<input value="@Model.User.Username" disabled /></label>
+    <label>Nova lozinka<input name="Password" type="password" placeholder="ostavi prazno za staru" /></label>
+    <label>Ime<input name="FirstName" value="@Model.User.FirstName" /></label>
+    <label>Prezime<input name="LastName" value="@Model.User.LastName" /></label>
+    <label>Email<input name="Email" value="@Model.User.Email" /></label>
+    <label>Datum rodjenja <input type="date" name="BirthDate" value="@Model.User.BirthDate.ToString("yyyy-MM-dd")" /></label>
+    <label>Pol
+        <select name="Gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+    </label>
+    <button type="submit">Sacuvaj</button>
+</form>

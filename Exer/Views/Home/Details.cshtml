@@ -1,0 +1,19 @@
+@model Exer.Models.AccommodationDetailsViewModel
+@{
+    ViewBag.Title = Model.Accommodation.Name;
+}
+<section class="details">
+    <img src="@Url.Content(Model.Accommodation.ImagePath)" alt="@Model.Accommodation.Name" />
+    <div>
+        <h1>@Model.Accommodation.Name</h1>
+        <p class="muted">@Model.Accommodation.Type, @Model.Accommodation.Address, @Model.Accommodation.City</p>
+        <p>@Model.Accommodation.Description</p>
+        <p><strong>@Model.Accommodation.PricePerNight.ToString("0.00") EUR</strong> po noci, maksimalno @Model.Accommodation.MaxGuests gostiju</p>
+        <p>Prosecna ocena: @(Model.AverageRating == 0 ? "nema ocena" : Model.AverageRating.ToString("0.0"))</p>
+        <a class="button" href="@Url.Action("CreateReservation", "Guest", new { id = Model.Accommodation.Id })">Rezervisi</a>
+    </div>
+</section>
+<h2>Odobrene recenzije</h2>
+@foreach (var r in Model.Reviews) {
+    <div class="panel"><strong>@r.Title</strong> (@r.Rating/5)<p>@r.Content</p></div>
+}
