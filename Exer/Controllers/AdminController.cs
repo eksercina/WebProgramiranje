@@ -1,4 +1,4 @@
-using Exer.Models;
+﻿using Exer.Models;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -87,12 +87,12 @@ namespace Exer.Controllers
         }
 
         [HttpPost]
-        public ActionResult ToggleAccommodation(int id, bool available)
+        public ActionResult ToggleAccommodation(int id)
         {
             if (!RequireRole(UserRole.Administrator)) return RedirectToAction("Login", "Account");
             var data = Repository.Load();
             var item = data.Accommodations.FirstOrDefault(a => a.Id == id && !a.Deleted);
-            if (item != null) item.Available = available;
+            if (item != null) item.Available = !item.Available;
             Repository.Save(data);
             return RedirectToAction("Accommodations");
         }

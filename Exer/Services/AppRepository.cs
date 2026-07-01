@@ -1,4 +1,4 @@
-using Exer.Models;
+﻿using Exer.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -113,15 +113,15 @@ namespace Exer.Services
             {
                 Users = new List<User>
                 {
-                    new User { Username = "admin", Password = "admin", FirstName = "Ana", LastName = "Admin", Email = "admin@example.com", BirthDate = new DateTime(1990, 1, 1), Gender = Gender.Female, Role = UserRole.Administrator },
-                    new User { Username = "host1", Password = "host1", FirstName = "Marko", LastName = "Domacin", Email = "host1@example.com", BirthDate = new DateTime(1988, 5, 12), Gender = Gender.Male, Role = UserRole.Host },
-                    new User { Username = "guest1", Password = "guest1", FirstName = "Jelena", LastName = "Gost", Email = "guest1@example.com", BirthDate = new DateTime(1998, 3, 4), Gender = Gender.Female, Role = UserRole.Guest }
+                    new User { Username = "admin", Password = "admin", FirstName = "Mihajlo", LastName = "Miletic", Email = "admin@example.com", BirthDate = new DateTime(1990, 1, 1), Gender = Gender.Female, Role = UserRole.Administrator },
+                    new User { Username = "host1", Password = "host1", FirstName = "Pedja", LastName = "Balan", Email = "host1@example.com", BirthDate = new DateTime(1988, 5, 12), Gender = Gender.Male, Role = UserRole.Host },
+                    new User { Username = "guest1", Password = "guest1", FirstName = "Marko", LastName = "Milovanovic", Email = "guest1@example.com", BirthDate = new DateTime(1998, 3, 4), Gender = Gender.Female, Role = UserRole.Guest }
                 },
                 Accommodations = new List<Accommodation>
                 {
-                    new Accommodation { Id = 1, Name = "Hotel Dunav", Type = "Hotel", Description = "Mirna lokacija blizu centra.", Address = "Kej 12", City = "Novi Sad", PricePerNight = 75, MaxGuests = 3, ImagePath = "/Content/Images/hotel.svg", PostedAt = DateTime.Today.AddDays(-14), Available = true, HostUsername = "host1" },
-                    new Accommodation { Id = 2, Name = "Apartman Park", Type = "Apartman", Description = "Svetao apartman za porodice.", Address = "Park 8", City = "Beograd", PricePerNight = 50, MaxGuests = 4, ImagePath = "/Content/Images/apartment.svg", PostedAt = DateTime.Today.AddDays(-7), Available = true, HostUsername = "host1" },
-                    new Accommodation { Id = 3, Name = "Hostel Stari grad", Type = "Hostel", Description = "Povoljan smestaj za kraci boravak.", Address = "Glavna 3", City = "Nis", PricePerNight = 24, MaxGuests = 2, ImagePath = "/Content/Images/hostel.svg", PostedAt = DateTime.Today.AddDays(-3), Available = false, HostUsername = "host1" }
+                    new Accommodation { Id = 1, Name = "Hotel Moskva", Type = "Hotel", Description = "Mirna lokacija blizu centra.", Address = "Terazije 20", City = "Beograd", PricePerNight = 75, MaxGuests = 3, ImagePath = "/Content/Images/HotelMoskva.jpg", PostedAt = DateTime.Today.AddDays(-14), Available = true, HostUsername = "host1" },
+                    new Accommodation { Id = 2, Name = "Hotel Srbija", Type = "Hotel", Description = "Hotel u centru Vrsac, pogodan za poslovna i turisticka putovanja.", Address = "Svetosavski trg 12", City = "Vrsac", PricePerNight = 50, MaxGuests = 4, ImagePath = "/Content/Images/HotelSrbija.jpg", PostedAt = DateTime.Today.AddDays(-7), Available = true, HostUsername = "host1" },
+                    new Accommodation { Id = 3, Name = "Villa Breg", Type = "Hotel", Description = "Hotel sa pogledom na Vrsacke vinograde i bazenom.", Address = "Goranska bb", City = "Vrsac", PricePerNight = 24, MaxGuests = 2, ImagePath = "/Content/Images/VillaBreg.jpg", PostedAt = DateTime.Today.AddDays(-3), Available = false, HostUsername = "host1" }
                 },
                 Reservations = new List<Reservation>
                 {
@@ -136,3 +136,4 @@ namespace Exer.Services
         }
     }
 }
+

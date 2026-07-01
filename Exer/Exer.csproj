@@ -122,6 +122,9 @@
     <Content Include="Content\Images\hotel.svg" />
     <Content Include="Content\Images\apartment.svg" />
     <Content Include="Content\Images\hostel.svg" />
+    <Content Include="Content\Images\HotelMoskva.jpg" />
+    <Content Include="Content\Images\HotelSrbija.jpg" />
+    <Content Include="Content\Images\VillaBreg.jpg" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -194,3 +197,4 @@
   </Target>
   -->
 </Project>
+
